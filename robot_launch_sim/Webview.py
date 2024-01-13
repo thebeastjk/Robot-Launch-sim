@@ -7,7 +7,7 @@ import math
 
 Speaker_Height_high = 6.90625
 Speaker_Height_low = 6.5
-Speaker_depth = 2 + (1/3)
+Speaker_depth = 19/12
 global G
 G = 32.174
 time_max = 10000 # in millseconds
@@ -17,9 +17,9 @@ st.title('Robot Sim')
 col1, col2 = st.columns(2)
 
 with col1:
-    v = st.number_input('Launch speed',value=1)
-    walldist = st.number_input('Distance',value=1)
-    yoffset = st.number_input('Shooter height',value=1)
+    v = st.number_input('Launch speed',value=25.0,step=1.0)
+    walldist = st.number_input('Distance',value=3.0,min_value=2.0,step=1.0)
+    yoffset = st.number_input('Shooter height',value=0.0,step=0.5, min_value=0.0)
 
 def Anglecalc(v = 0.0,x = 0.0,y = 0.0):
     try:
@@ -80,3 +80,5 @@ fig.add_vline(x=walldist, annotation_text="Target Distance",annotation_position=
 
 with col2:
     st.plotly_chart(fig)
+    if angle == 0:
+        st.markdown("**:red[If the lines do not cross the Speaker adjust the variables]**")
