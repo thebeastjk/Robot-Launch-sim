@@ -82,3 +82,7 @@ with col2:
     st.plotly_chart(fig)
     if angle == 0:
         st.markdown("**:red[If the lines do not cross the Speaker adjust the variables]**")
+    elif angleh == 0:
+        st.markdown("**:red[If the lines do not cross the Speaker adjust the variables]**")
+    elif anglem == 0:
+        st.markdown("**:red[If the lines do not cross the Speaker adjust the variables]**")
