@@ -63,7 +63,7 @@ df2 = pd.DataFrame()
 df2['x'] = [walldist - Speaker_depth, walldist]
 df2['y'] = [Speaker_Height_high - yoffset, Speaker_Height_low - yoffset]
 df2['type'] = 'Speaker'
-df= pd.concat([df,df2])
+
 
 df3 = pd.DataFrame()
 df3['x'], df3['y'] = trajectory(v,sim_time,angleh)
@@ -73,6 +73,7 @@ df4 = pd.DataFrame()
 df4['x'],df4['y'] = trajectory(v,sim_time,anglem)
 df4['type'] = 'Middle Trajectory'
 df = pd.concat([df,df4])
+df= pd.concat([df,df2])
 print(df)
 
 fig = px.line(df, x=df['x'], y=df['y'],title="Simulation",labels={'x':'Distance away (Feet)', 'y':'Height from shooter (Feet)'},color='type')
