@@ -12,6 +12,7 @@ global G
 G = 32.174
 time_max = 10000 # in millseconds
 
+st.set_page_config(page_title="Robot Simulation", page_icon="🤖")
 
 st.title('Robot Sim')
 col1, col2 = st.columns(2)
