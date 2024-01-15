@@ -21,6 +21,7 @@ with col1:
     v = st.number_input('Launch speed',value=25.0,step=1.0)
     walldist = st.number_input('Distance',value=3.0,min_value=2.0,step=1.0)
     yoffset = st.number_input('Shooter height',value=0.0,step=0.5, min_value=0.0)
+    noteheight = st.number_input('Note height', value=1.0,min_value=0.0)
 
 def Anglecalc(v = 0.0,x = 0.0,y = 0.0):
     try:
@@ -32,14 +33,15 @@ def Anglecalc(v = 0.0,x = 0.0,y = 0.0):
         return 0
 
 
-angle = Anglecalc(v,walldist,(Speaker_Height_low - yoffset))
-angleh = Anglecalc(v,walldist - Speaker_depth,(Speaker_Height_high - yoffset))
+angle = Anglecalc(v,walldist,(Speaker_Height_low - yoffset + (noteheight/12)))
+angleh = Anglecalc(v,walldist - Speaker_depth,(Speaker_Height_high - yoffset - (noteheight/12)))
 anglem = angleh - ((angleh - angle)/2)
 sim_time = walldist/(math.cos(angle)*v)
 with col1:
     st.write(f"Target Low Angle {math.degrees(angle):.2f} degrees")
-    st.write(f"Target High Angle {math.degrees(angleh):.2f} degrees")
     st.write(f"Target Middle Angle {math.degrees(anglem):.2f} degrees")
+    st.write(f"Target High Angle {math.degrees(angleh):.2f} degrees")
+    st.write(f"The Difference of angles is {abs(math.degrees(angle - angleh)):.2f} degrees")
     st.write(f"Air Time : {sim_time:.2f} seconds")
     
 
