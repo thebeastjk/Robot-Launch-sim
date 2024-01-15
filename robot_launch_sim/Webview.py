@@ -21,7 +21,7 @@ with col1:
     v = st.number_input('Launch speed',value=25.0,step=1.0)
     walldist = st.number_input('Distance',value=3.0,min_value=2.0,step=1.0)
     yoffset = st.number_input('Shooter height',value=0.0,step=0.5, min_value=0.0)
-    noteheight = st.number_input('Note height', value=1.0,min_value=0.0)
+    noteheight = st.number_input('Note height (Inches)', value=1.0,min_value=0.0)
 
 def Anglecalc(v = 0.0,x = 0.0,y = 0.0):
     try:
